@@ -1,0 +1,12 @@
+name: ${project.artifactId}
+main: fr.k0bus.bettersay.Main
+version: ${project.version}
+api-version: "1.15"
+commands:
+   bsay:
+      description: Commande principale !
+      usage: /bsay
+permissions:
+   bettersay.reload:
+      description: "Allow reloading CreativeManager"
+      default: op

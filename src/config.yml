@@ -1,0 +1,5 @@
+##Plugin configuration
+tag: '&r[&cBetterSay&r] '
+
+server-format: '&a[SERVER] {MESSAGE}'
+player-format: '&a[{PLAYER}] {MESSAGE}'
