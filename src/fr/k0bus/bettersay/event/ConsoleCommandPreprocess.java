@@ -16,13 +16,16 @@ public class ConsoleCommandPreprocess implements Listener {
 	}
 
 	@EventHandler(ignoreCancelled = true)
-	public void onGMChange(ServerCommandEvent e) {
-        String args[] = e.getCommand().split(" ");
+	public void onCommand(ServerCommandEvent e) {
+        String[] args = e.getCommand().split(" ");
         if(args.length >1 && args[0].equals("say"))
         {
-            String message = e.getCommand().substring(4);
-            message = plugin.getConfig().getString("server-format")
-                .replace("{MESSAGE}", message);
+            String toSend = e.getCommand().substring(4);
+            String message = plugin.getConfig().getString("server-format");
+            if(message != null)
+                message = message.replace("{MESSAGE}", toSend);
+            else
+                message = "";
 			plugin.getServer().broadcastMessage(ChatColor.translateAlternateColorCodes('&', message));
 			e.setCancelled(true);
         }
