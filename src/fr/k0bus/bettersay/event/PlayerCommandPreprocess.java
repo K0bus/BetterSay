@@ -16,16 +16,17 @@ public class PlayerCommandPreprocess implements Listener {
 	}
 
 	@EventHandler(ignoreCancelled = true)
-	public void onGMChange(PlayerCommandPreprocessEvent e) {
-		String args[] = e.getMessage().split(" ");
-        if(args.length >1 && args[0].equals("/say"))
-        {
-            String message = e.getMessage().substring(5);
-            message = plugin.getConfig().getString("player-format")
-                .replace("{PLAYER}", e.getPlayer().getName())
-                .replace("{MESSAGE}", message);
-			plugin.getServer().broadcastMessage(ChatColor.translateAlternateColorCodes('&', message));
-			e.setCancelled(true);
-        }
+	public void onCommand(PlayerCommandPreprocessEvent e) {
+		if(e.getPlayer().hasPermission("minecraft.command.say")) {
+			String args[] = e.getMessage().split(" ");
+			if (args.length > 1 && args[0].equals("/say")) {
+				String message = e.getMessage().substring(5);
+				message = plugin.getConfig().getString("player-format")
+						.replace("{PLAYER}", e.getPlayer().getName())
+						.replace("{MESSAGE}", message);
+				plugin.getServer().broadcastMessage(ChatColor.translateAlternateColorCodes('&', message));
+				e.setCancelled(true);
+			}
+		}
 	}
 }
