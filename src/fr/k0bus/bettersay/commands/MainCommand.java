@@ -23,7 +23,7 @@ public class MainCommand implements CommandExecutor {
         {
             if(args[0].equals("reload"))
             {
-                if(sender instanceof Player == false || sender.hasPermission("bettersay.reload"))
+                if(!(sender instanceof Player) || sender.hasPermission("bettersay.reload"))
                 {
                     plugin.loadConfigManager();
                     sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("tag") + " &5Configuration reloaded !"));
