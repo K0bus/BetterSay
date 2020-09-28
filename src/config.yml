@@ -3,3 +3,10 @@ tag: '&r[&cBetterSay&r] '
 
 server-format: '&a[SERVER] {MESSAGE}'
 player-format: '&a[{PLAYER}] {MESSAGE}'
+
+announce_interval: 300
+announcements:
+  discord:
+    - '["",{"text":"["},{"text":"BetterSay","color":"red"},{"text":"] Message 1"}]'
+  boutique:
+    - '["",{"text":"["},{"text":"BetterSay","color":"red"},{"text":"] Message 2"}]'
