@@ -1,0 +1,12 @@
+name: ${project.artifactId}
+main: fr.k0bus.saymanager.Main
+version: ${project.version}
+api-version: "1.16"
+commands:
+   saymanager:
+      description: Commande principale !
+      usage: /saymanager
+permissions:
+   saymanager.reload:
+      description: "Allow reloading SayManager"
+      default: op

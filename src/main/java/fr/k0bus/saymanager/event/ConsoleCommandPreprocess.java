@@ -1,11 +1,12 @@
-package fr.k0bus.bettersay.event;
+package fr.k0bus.saymanager.event;
 
+import fr.k0bus.k0buslib.utils.Formater;
 import org.bukkit.ChatColor;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.server.ServerCommandEvent;
 
-import fr.k0bus.bettersay.Main;
+import fr.k0bus.saymanager.Main;
 
 public class ConsoleCommandPreprocess implements Listener {
 
@@ -21,12 +22,12 @@ public class ConsoleCommandPreprocess implements Listener {
         if(args.length >1 && args[0].equals("say"))
         {
             String toSend = e.getCommand().substring(4);
-            String message = plugin.getConfig().getString("server-format");
+            String message = plugin.getSettings().getString("server-format");
             if(message != null)
                 message = message.replace("{MESSAGE}", toSend);
             else
                 message = "";
-			plugin.getServer().broadcastMessage(ChatColor.translateAlternateColorCodes('&', message));
+			plugin.getServer().broadcastMessage(Formater.formatColor(message));
 			e.setCancelled(true);
         }
 	}

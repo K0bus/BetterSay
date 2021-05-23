@@ -1,12 +1,12 @@
-package fr.k0bus.bettersay.commands;
+package fr.k0bus.saymanager.commands;
 
+import fr.k0bus.k0buslib.utils.Messages;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
 
-import fr.k0bus.bettersay.Main;
+import fr.k0bus.saymanager.Main;
 
 public class MainCommand implements CommandExecutor {
 
@@ -23,19 +23,20 @@ public class MainCommand implements CommandExecutor {
         {
             if(args[0].equals("reload"))
             {
-                if(sender.hasPermission("bettersay.reload"))
+                if(sender.hasPermission("saymanager.reload"))
                 {
                     plugin.loadConfigManager();
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("tag") + " &5Configuration reloaded !"));
+                    Messages.sendMessageText(plugin.getMessagesManager(), sender, "&5Configuration reloaded !");
                 }
                 else
                 {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("tag") + " &4Permissions denied !"));
+                    Messages.sendMessageText(plugin.getMessagesManager(), sender, "&4Permissions denied !");
                 }
             }
             else
             {
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("tag") + " &aRunning " + plugin.getName() + " v" + plugin.getDescription().getVersion()));
+                Messages.sendMessageText(plugin.getMessagesManager(), sender,
+                        "&aRunning " + plugin.getName() + " v" + plugin.getDescription().getVersion());
             }
         }
 

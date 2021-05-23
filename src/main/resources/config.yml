@@ -1,0 +1,5 @@
+##Plugin configuration
+tag: '&r[&cSayManager&r] '
+
+server-format: '&a[SERVER] &r{MESSAGE}'
+player-format: '&a[{PLAYER}] &r{MESSAGE}'
